@@ -1,3 +1,28 @@
+# celso-fabri-website
+
+Site pessoal do Celso Fabri, construído com [Gatsby](https://www.gatsbyjs.com/) e conteúdo servido pelo [Contentful](https://www.contentful.com/) (headless CMS).
+
+## Contentful
+
+O conteúdo do site é buscado via `gatsby-source-contentful`. Para rodar localmente:
+
+1. Copie `.env.example` para `.env.development` (e `.env.production` para builds de produção locais).
+2. Preencha `CONTENTFUL_SPACE_ID` e `CONTENTFUL_ACCESS_TOKEN` com as credenciais do Content Delivery API do space (Contentful > Settings > API keys).
+3. Rode `npm run develop` normalmente — o schema do Contentful aparece em `http://localhost:8000/___graphql`.
+
+Content types atuais no space: `posts`, `projects` e `companies`.
+
+## Deploy (GitHub Pages)
+
+O deploy é automatizado via GitHub Actions (`.github/workflows/deploy.yml`): a cada push em `main`, o site é buildado com `npm run build:gh-pages` e publicado no GitHub Pages.
+
+Configuração necessária no repositório (uma vez):
+
+- **Settings > Pages > Source**: definir como `GitHub Actions`.
+- **Settings > Secrets and variables > Actions**: cadastrar `CONTENTFUL_SPACE_ID` e `CONTENTFUL_ACCESS_TOKEN`.
+
+O site é publicado em `https://celsofabri.github.io/celso-fabri-website/`. O domínio próprio `celsofabri.com` foi propositalmente deixado de fora nesta etapa — quando o domínio for configurado, remover o `pathPrefix` em `gatsby-config.js` e a flag `--prefix-paths` do script `build:gh-pages`, já que um domínio próprio serve o site a partir da raiz.
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.com">
