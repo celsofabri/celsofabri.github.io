@@ -3,6 +3,8 @@
 Portfólio profissional em React (Vite), 100% responsivo, com dark mode e integração
 com a GitHub API para exibir projetos automaticamente.
 
+🔗 **Produção:** [celsofabri.github.io](https://celsofabri.github.io/)
+
 ## Stack
 
 - [Vite](https://vitejs.dev/) + [React 19](https://react.dev/)
@@ -10,21 +12,50 @@ com a GitHub API para exibir projetos automaticamente.
 - CSS Modules (sem dependências extras de CSS)
 - Fetch direto na GitHub API (`https://api.github.com/users/<usuario>/repos`)
 
+## Requisitos
+
+- **Node.js 24.20.0** (LTS "Krypton") — versão fixada em `.nvmrc` e em `engines`
+  no `package.json`. Se usa [nvm](https://github.com/nvm-sh/nvm):
+
+  ```bash
+  nvm install   # instala a versão do .nvmrc, se ainda não tiver
+  nvm use       # ativa a versão do .nvmrc nesta pasta
+  ```
+
+- npm (vem junto com o Node)
+
 ## Como rodar localmente
 
 ```bash
+git clone git@github.com:celsofabri/celsofabri.github.io.git
+cd celsofabri.github.io
+nvm use          # opcional, mas garante a mesma versão do Node do CI
 npm install
 npm run dev
 ```
 
 Acesse `http://localhost:5173` (ou a porta indicada no terminal).
 
-Para gerar o build de produção:
+Outros comandos úteis:
 
 ```bash
-npm run build
-npm run preview
+npm run build     # build de produção em dist/ (roda o postbuild automaticamente)
+npm run preview   # serve o build de produção localmente, pra testar antes de publicar
+npm run lint      # checagem estática com oxlint
 ```
+
+## Deploy
+
+O deploy é automático via **GitHub Actions** (`.github/workflows/deploy.yml`):
+todo push/merge na branch `main` builda o projeto e publica no **GitHub Pages**.
+
+Como este repositório é uma *user page* (`celsofabri.github.io`), o site fica
+disponível direto na raiz do domínio, sem subpasta:
+**https://celsofabri.github.io/**
+
+Fluxo de trabalho: abrir uma branch/PR → revisar → mergear em `main` → o
+workflow builda e publica sozinho (acompanhe em **Actions**, no repositório).
+Não é necessário nenhum passo manual de deploy.
 
 ## Onde configurar seus dados
 
@@ -99,15 +130,19 @@ chega no seu e-mail com nome, e-mail e mensagem preenchidos pelo visitante.
 ## Estrutura de pastas
 
 ```
+.github/
+  workflows/    deploy.yml — build + deploy automático no GitHub Pages
 src/
-  components/   Header, Footer, ProjectCard, Badge, SocialLinks, ThemeToggle, Reveal
-  config/       profile.js — todos os dados pessoais
+  components/   Header, Footer, ProjectCard, Badge, CompanyLogo, SocialLinks, ThemeToggle, Reveal
+  config/       profile.js (dados pessoais), web3forms.js (config do formulário)
   hooks/        useTheme, useGithubRepos, useReveal
   pages/        Home, About, Portfolio, Contact (cada uma com seu .module.css)
   styles/       global.css e variables.css (paleta de cores / tema claro-escuro)
-  utils/        languageColors.js — cores por linguagem nos cards de projeto
+  utils/        assetPath.js, languageColors.js, companyColor.js
 public/
-  avatar-placeholder.svg
+  avatar.jpg, avatar-placeholder.svg
+  logos/        logos das empresas/instituições usadas na página "Sobre"
+.nvmrc          versão do Node usada localmente e no CI
 ```
 
 ## Dark mode
