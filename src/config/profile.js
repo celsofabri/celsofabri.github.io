@@ -79,6 +79,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Delivery Much Brasil',
+      logo: '/logos/deliverymuch.png',
       location: 'Curitiba, Paraná, Brasil',
       roles: [
         {
@@ -94,6 +95,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Delivery Center',
+      logo: '/logos/deliverycenter.jpg',
       location: 'Curitiba, Paraná, Brasil',
       roles: [
         {
@@ -107,6 +109,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'ateliware software',
+      logo: '/logos/ateliware.png',
       location: 'Curitiba, Paraná, Brasil',
       roles: [
         {
@@ -137,6 +140,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Menthor.co',
+      logo: '/logos/menthor.svg',
       location: 'Curitiba e Região, Brasil',
       roles: [
         {
@@ -150,7 +154,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'MadeiraMadeira',
-      logo: '/logos/madeiramadeira.png',
+      logo: '/logos/madeiramadeira.svg',
       location: 'Curitiba, Paraná',
       roles: [
         {
@@ -216,6 +220,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Agência IMAM — Publicidade e Propaganda',
+      logo: '/logos/imam.svg',
       location: 'Curitiba, Paraná',
       roles: [
         {
@@ -238,6 +243,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Agência WX',
+      logo: '/logos/wx.png',
       location: 'Curitiba e Região, Brasil',
       roles: [
         {
@@ -252,6 +258,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Andaraki Calçados',
+      logo: '/logos/andaraki.svg',
       location: 'Curitiba, Paraná',
       roles: [
         {

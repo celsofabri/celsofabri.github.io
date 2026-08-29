@@ -3,6 +3,7 @@ import styles from './Home.module.css'
 import SocialLinks from '../components/SocialLinks'
 import Reveal from '../components/Reveal'
 import { profile } from '../config/profile'
+import { asset } from '../utils/assetPath'
 
 export default function Home() {
   return (
@@ -30,7 +31,7 @@ export default function Home() {
 
         <Reveal className={styles.portraitWrap} delay={120}>
           <div className={styles.portraitGlow} aria-hidden="true" />
-          <img src={profile.avatar} alt={profile.name} className={styles.portrait} />
+          <img src={asset(profile.avatar)} alt={profile.name} className={styles.portrait} />
         </Reveal>
       </div>
     </section>
