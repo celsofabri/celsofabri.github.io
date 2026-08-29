@@ -1,0 +1,43 @@
+.page {
+  padding: 60px 24px 100px;
+}
+
+.header {
+  max-width: 640px;
+  margin-bottom: 40px;
+}
+
+.heading {
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
+  font-weight: 800;
+  margin: 0 0 12px;
+}
+
+.subheading {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.githubLink {
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.status {
+  color: var(--color-text-muted);
+  padding: 40px 0;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}

@@ -1,0 +1,124 @@
+.page {
+  padding: 60px 24px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.header {
+  max-width: 420px;
+}
+
+.heading {
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
+  font-weight: 800;
+  margin: 0 0 16px;
+}
+
+.subheading {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 28px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-card);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.field input,
+.field textarea {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  resize: vertical;
+  transition: border-color var(--transition-fast);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.submit {
+  margin-top: 8px;
+  padding: 14px 22px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.submit:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
+.submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  transform: none;
+}
+
+.feedbackSuccess,
+.feedbackError {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.feedbackSuccess {
+  color: #16a34a;
+  background: color-mix(in srgb, #16a34a 12%, transparent);
+  border: 1px solid color-mix(in srgb, #16a34a 30%, transparent);
+}
+
+.feedbackError {
+  color: #dc2626;
+  background: color-mix(in srgb, #dc2626 12%, transparent);
+  border: 1px solid color-mix(in srgb, #dc2626 30%, transparent);
+}
+
+.feedbackError a {
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+@media (max-width: 860px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .header {
+    max-width: none;
+  }
+}

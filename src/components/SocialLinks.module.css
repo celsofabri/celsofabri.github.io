@@ -1,0 +1,25 @@
+.links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  transition: color var(--transition-fast), border-color var(--transition-fast),
+    transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.link:hover {
+  color: var(--color-accent-contrast);
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}

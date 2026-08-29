@@ -1,99 +1,116 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby's default starter
-</h1>
+# Portfólio — Celso Fabri Junior
 
-Kick off your project with this default boilerplate. This starter ships with the main Gatsby configuration files you might need to get up and running blazing fast with the blazing fast app generator for React.
+Portfólio profissional em React (Vite), 100% responsivo, com dark mode e integração
+com a GitHub API para exibir projetos automaticamente.
 
-_Have another more specific idea? You may want to check out our vibrant collection of [official and community-created starters](https://www.gatsbyjs.com/docs/gatsby-starters/)._
+## Stack
 
-## 🚀 Quick start
+- [Vite](https://vitejs.dev/) + [React 19](https://react.dev/)
+- [React Router](https://reactrouter.com/) para navegação entre páginas
+- CSS Modules (sem dependências extras de CSS)
+- Fetch direto na GitHub API (`https://api.github.com/users/<usuario>/repos`)
 
-1.  **Create a Gatsby site.**
+## Como rodar localmente
 
-    Use the Gatsby CLI ([install instructions](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-0/#gatsby-cli)) to create a new site, specifying the default starter.
+```bash
+npm install
+npm run dev
+```
 
-    ```shell
-    # create a new Gatsby site using the default starter
-    gatsby new my-default-starter https://github.com/gatsbyjs/gatsby-starter-default
-    ```
+Acesse `http://localhost:5173` (ou a porta indicada no terminal).
 
-1.  **Start developing.**
+Para gerar o build de produção:
 
-    Navigate into your new site’s directory and start it up.
+```bash
+npm run build
+npm run preview
+```
 
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
+## Onde configurar seus dados
 
-1.  **Open the source code and start editing!**
+Todo o conteúdo pessoal do site fica centralizado em **`src/config/profile.js`**:
 
-    Your site is now running at `http://localhost:8000`!
+| Campo | Descrição |
+|---|---|
+| `name`, `title`, `tagline`, `heroSubtitle` | Textos da Home |
+| `bio` | Texto da página "Sobre" (aceita múltiplos parágrafos separados por `\n`) |
+| `avatar` | Caminho da foto de perfil (veja seção abaixo) |
+| `github`, `githubUsername`, `linkedin`, `email` | Links de contato e usuário usado para buscar repositórios |
+| `skills` | Lista de badges de tecnologias na página "Sobre" |
+| `experience` | Array de experiências profissionais — vira os cards estilo currículo, com logo, cargo, empresa, período e lista de conquistas (`highlights`) |
+| `education` | Array de formação acadêmica |
+| `certifications` | Lista simples de certificações (opcional — remova o array para ocultar a seção) |
+| `languages` | Array `{ name, level }` de idiomas (opcional) |
 
-    Note: You'll also see a second link: `http://localhost:8000/___graphql`. This is a tool you can use to experiment with querying your data. Learn more about using this tool in the [Gatsby Tutorial](https://www.gatsbyjs.com/docs/tutorial/getting-started/part-4/#use-graphiql-to-explore-the-data-layer-and-write-graphql-queries).
+### Logos das empresas
 
-    Open the `my-default-starter` directory in your code editor of choice and edit `src/pages/index.js`. Save your changes and the browser will update in real time!
+Cada item de `experience` aceita um campo opcional `logo: '/logos/<arquivo>.svg'`.
+Coloque o arquivo em `public/logos/` e referencie o caminho absoluto. Sem esse
+campo, um badge colorido com as iniciais da empresa é exibido automaticamente
+(`src/components/CompanyLogo.jsx`).
 
-## 🚀 Quick start (Netlify)
+Já incluídas (baixadas do Wikimedia Commons, domínio público/CC): iFood, EBANX,
+Creditas e MadeiraMadeira. As demais empresas (agências e startups menores,
+algumas já encerradas) usam o badge de iniciais por não haver uma fonte oficial
+confiável para a logo — adicione manualmente em `public/logos/` se tiver o
+arquivo.
 
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
+### Foto de perfil
 
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+1. Coloque sua foto em `public/` (ex: `public/avatar.jpg`).
+2. Atualize `avatar: '/avatar.jpg'` em `src/config/profile.js`.
 
-## 🧐 What's inside?
+Um placeholder ilustrado (`public/avatar-placeholder.svg`) é usado até você trocar.
 
-A quick look at the top-level files and directories you'll see in a typical Gatsby project.
+### Projetos do Portfólio
 
-    .
-    ├── node_modules
-    ├── src
-    ├── .gitignore
-    ├── gatsby-browser.js
-    ├── gatsby-config.js
-    ├── gatsby-node.js
-    ├── gatsby-ssr.js
-    ├── LICENSE
-    ├── package.json
-    └── README.md
+A página `/portfolio` busca automaticamente os repositórios públicos do usuário
+definido em `githubUsername`, ignorando forks e repositórios arquivados, e permite
+filtrar por linguagem. Não é necessário editar nada manualmente — bastando manter
+seus repositórios do GitHub com descrição e (quando existir) o campo "Website"
+preenchido para que o botão "Ver deploy" apareça.
 
-1.  **`/node_modules`**: This directory contains all of the modules of code that your project depends on (npm packages) are automatically installed.
+### Formulário de contato (Web3Forms)
 
-1.  **`/src`**: This directory will contain all of the code related to what you will see on the front-end of your site (what you see in the browser) such as your site header or a page template. `src` is a convention for “source code”.
+O formulário envia e-mail direto do navegador usando o
+[Web3Forms](https://web3forms.com) — um único `fetch` para a API deles, sem
+SDK, sem backend e **sem conectar nenhuma conta de e-mail** (nada de OAuth com
+o Google). É grátis até 250 envios/mês. Enquanto não for configurado, o
+formulário usa automaticamente um fallback via `mailto:` (abre o cliente de
+e-mail do visitante).
 
-1.  **`.gitignore`**: This file tells git which files it should not track / not maintain a version history for.
+Passo a passo:
 
-1.  **`gatsby-browser.js`**: This file is where Gatsby expects to find any usage of the [Gatsby browser APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-browser/) (if any). These allow customization/extension of default Gatsby settings affecting the browser.
+1. Acesse [web3forms.com](https://web3forms.com) e digite o e-mail onde você
+   quer receber as mensagens (não pede senha nem login).
+2. Você recebe a **Access Key** por e-mail em segundos — copie-a.
+3. Cole em `src/config/web3forms.js`:
 
-1.  **`gatsby-config.js`**: This is the main configuration file for a Gatsby site. This is where you can specify information about your site (metadata) like the site title and description, which Gatsby plugins you’d like to include, etc. (Check out the [config docs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-config/) for more detail).
+   ```js
+   export const web3formsConfig = {
+     accessKey: 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+   }
+   ```
 
-1.  **`gatsby-node.js`**: This file is where Gatsby expects to find any usage of the [Gatsby Node APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-node/) (if any). These allow customization/extension of default Gatsby settings affecting pieces of the site build process.
+Pronto — o formulário passa a enviar de verdade, com estados de carregando,
+sucesso e erro (com fallback para `mailto:` caso o envio falhe). Cada envio
+chega no seu e-mail com nome, e-mail e mensagem preenchidos pelo visitante.
 
-1.  **`gatsby-ssr.js`**: This file is where Gatsby expects to find any usage of the [Gatsby server-side rendering APIs](https://www.gatsbyjs.com/docs/reference/config-files/gatsby-ssr/) (if any). These allow customization of default Gatsby settings affecting server-side rendering.
+## Estrutura de pastas
 
-1.  **`LICENSE`**: This Gatsby starter is licensed under the 0BSD license. This means that you can see this file as a placeholder and replace it with your own license.
+```
+src/
+  components/   Header, Footer, ProjectCard, Badge, SocialLinks, ThemeToggle, Reveal
+  config/       profile.js — todos os dados pessoais
+  hooks/        useTheme, useGithubRepos, useReveal
+  pages/        Home, About, Portfolio, Contact (cada uma com seu .module.css)
+  styles/       global.css e variables.css (paleta de cores / tema claro-escuro)
+  utils/        languageColors.js — cores por linguagem nos cards de projeto
+public/
+  avatar-placeholder.svg
+```
 
-1.  **`package.json`**: A manifest file for Node.js projects, which includes things like metadata (the project’s name, author, etc). This manifest is how npm knows which packages to install for your project.
+## Dark mode
 
-1.  **`README.md`**: A text file containing useful reference information about your project.
-
-## 🎓 Learning Gatsby
-
-Looking for more guidance? Full documentation for Gatsby lives [on the website](https://www.gatsbyjs.com/). Here are some places to start:
-
-- **For most developers, we recommend starting with our [in-depth tutorial for creating a site with Gatsby](https://www.gatsbyjs.com/docs/tutorial/getting-started/).** It starts with zero assumptions about your level of ability and walks through every step of the process.
-
-- **To dive straight into code samples, head [to our documentation](https://www.gatsbyjs.com/docs/).** In particular, check out the _Guides_, _API Reference_, and _Advanced Tutorials_ sections in the sidebar.
-
-## 💫 Deploy
-
-[Build, Deploy, and Host On Netlify](https://netlify.com)
-
-The fastest way to combine your favorite tools and APIs to build the fastest sites, stores, and apps for the web. And also the best place to build, deploy, and host your Gatsby sites.
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+O tema padrão é escuro, com toggle manual no cabeçalho (persistido em
+`localStorage`). As cores de ambos os temas ficam em `src/styles/variables.css`.

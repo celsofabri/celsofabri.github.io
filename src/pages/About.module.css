@@ -1,0 +1,226 @@
+.page {
+  padding: 60px 24px 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  min-width: 0;
+}
+
+.section {
+  max-width: 760px;
+  min-width: 0;
+}
+
+.wideSection {
+  max-width: 880px;
+}
+
+.heading {
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
+  font-weight: 800;
+  margin: 0 0 24px;
+}
+
+.subheading {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0 0 24px;
+}
+
+.paragraph {
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  font-size: 1.05rem;
+  margin: 0 0 16px;
+  overflow-wrap: anywhere;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Experiência — agrupada por empresa */
+
+.resume {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.company {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition-base);
+}
+
+.company:hover {
+  border-color: var(--color-accent);
+}
+
+.companyHeader {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 22px;
+}
+
+.companyMeta {
+  min-width: 0;
+}
+
+.companyName {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.location {
+  margin: 4px 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+  overflow-wrap: anywhere;
+}
+
+.roles {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.role {
+  min-width: 0;
+  padding-left: 16px;
+  border-left: 2px solid var(--color-border);
+}
+
+.roleHeader {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 4px 16px;
+}
+
+.roleTitle {
+  margin: 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+
+.period {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.highlights {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.highlights li {
+  overflow-wrap: anywhere;
+}
+
+/* Certificações */
+
+.certList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.certItem {
+  padding: 14px 18px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-elevated);
+  color: var(--color-text);
+  font-size: 0.95rem;
+  overflow-wrap: anywhere;
+}
+
+/* Formação acadêmica */
+
+.educationList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.educationCard {
+  min-width: 0;
+  padding: 22px 24px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-elevated);
+  box-shadow: var(--shadow-card);
+  transition: border-color var(--transition-base);
+}
+
+.educationCard:hover {
+  border-color: var(--color-accent);
+}
+
+.educationHeader {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+.degree {
+  margin: 14px 0 0;
+  padding-left: 66px;
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 560px) {
+  .company {
+    padding: 20px;
+  }
+
+  .roleHeader {
+    grid-template-columns: 1fr;
+  }
+
+  .period {
+    text-align: left;
+    color: var(--color-text-muted);
+  }
+
+  .educationHeader {
+    grid-template-columns: auto minmax(0, 1fr);
+  }
+
+  .educationHeader .period {
+    grid-column: 2;
+  }
+
+  .degree {
+    padding-left: 0;
+  }
+}
