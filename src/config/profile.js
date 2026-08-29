@@ -192,6 +192,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Likewise',
+      logo: '/logos/likewise.png',
       location: 'Curitiba e Região, Brasil',
       roles: [
         {
@@ -206,6 +207,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Snowman Labs',
+      logo: '/logos/snowmanlabs.png',
       location: 'Curitiba e Região, Brasil',
       roles: [
         {
@@ -220,7 +222,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
     },
     {
       company: 'Agência IMAM — Publicidade e Propaganda',
-      logo: '/logos/imam.svg',
+      logo: '/logos/imam.jpg',
       location: 'Curitiba, Paraná',
       roles: [
         {
