@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import styles from './CompanyLogo.module.css'
 import { companyColor, companyInitials } from '../utils/companyColor'
+import { asset } from '../utils/assetPath'
 
 export default function CompanyLogo({ company, logo }) {
   const [failed, setFailed] = useState(false)
@@ -8,7 +9,7 @@ export default function CompanyLogo({ company, logo }) {
   if (logo && !failed) {
     return (
       <div className={styles.logo}>
-        <img src={logo} alt={company} onError={() => setFailed(true)} />
+        <img src={asset(logo)} alt={company} onError={() => setFailed(true)} />
       </div>
     )
   }
