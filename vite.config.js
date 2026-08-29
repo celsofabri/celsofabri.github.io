@@ -3,6 +3,8 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/celso-fabri-website/',
+  // Repositório é uma "user page" (celsofabri.github.io), publicada na raiz
+  // do domínio — sem subpasta, diferente de um repositório de projeto comum.
+  base: '/',
   plugins: [react()],
 })
