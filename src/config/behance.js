@@ -32,11 +32,11 @@ export const behanceCases = [
   {
     slug: 'cactus-design-system',
     title: 'Cactus Design System',
-    year: '2023',
+    year: '2020',
     category: 'Produto & UI',
-    summary: 'Design system com biblioteca de componentes e protótipo navegável em Figma.',
+    summary: 'Design system da Creditas — biblioteca de componentes e protótipo navegável em Figma.',
     description: [
-      'Design system construído para padronizar componentes, tokens e padrões de interface entre produtos, com protótipo navegável publicado direto do Figma.',
+      'Design system da Creditas (que havia adquirido a Bcredi), construído para padronizar componentes, tokens e padrões de interface entre os produtos da empresa, com protótipo navegável publicado direto do Figma.',
       'O case reúne a biblioteca de componentes e a documentação visual do sistema, desenhados ao longo da migração de Sketch/Abstract para Figma.',
     ],
     role: 'Design system · UI',
