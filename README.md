@@ -149,8 +149,25 @@ Passo a passo:
    ```
 
 Pronto — o formulário passa a enviar de verdade, com estados de carregando,
-sucesso e erro (com fallback para `mailto:` caso o envio falhe). Cada envio
-chega no seu e-mail com nome, e-mail e mensagem preenchidos pelo visitante.
+sucesso e erro. Cada envio chega no seu e-mail com nome, e-mail e mensagem
+preenchidos pelo visitante, e responder o e-mail responde direto para quem
+escreveu (`replyto`).
+
+**O destinatário é a própria chave.** O Web3Forms não aceita um campo "para" no
+envio — isso seria um relay aberto. As mensagens chegam sempre no endereço
+usado para gerar a Access Key. Se elas não estiverem chegando em
+`celso.fabri@gmail.com`, gere uma chave nova em web3forms.com com esse endereço
+e troque o valor em `src/config/web3forms.js`; não há nada a mudar no código.
+
+Outros detalhes da implementação (`src/pages/Contact.jsx`):
+
+- Enquanto envia, o `<fieldset>` inteiro fica desabilitado — sem envio duplo.
+- O resultado aparece numa região com `role="status"` / `aria-live="polite"`,
+  que também recebe o foco, então quem usa teclado ou leitor de tela é avisado.
+  O erro mostra a mensagem devolvida pela API, para facilitar o diagnóstico.
+- Um honeypot (campo `botcheck` fora da tela) descarta envios de bot.
+- Sem a chave configurada, o formulário cai no fallback `mailto:` — e agora
+  avisa que fez isso, em vez de falhar em silêncio.
 
 ## Estrutura de pastas
 

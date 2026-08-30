@@ -34,6 +34,33 @@
   box-shadow: var(--shadow-card);
 }
 
+/* O <fieldset> existe só para desabilitar tudo de uma vez durante o envio —
+   daí o reset completo dos estilos padrão dele. */
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+
+.fields:disabled {
+  opacity: 0.7;
+}
+
+/* Honeypot: invisível para gente, preenchível por bot. Fora da tela em vez de
+   display:none, que muitos bots detectam. */
+.honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .field {
   display: flex;
   flex-direction: column;
@@ -86,7 +113,17 @@
   transform: none;
 }
 
+.feedback:empty {
+  display: none;
+}
+
+/* Recebe foco por script ao final do envio; a mensagem em si já é o destaque. */
+.feedback:focus {
+  outline: none;
+}
+
 .feedbackSuccess,
+.feedbackInfo,
 .feedbackError {
   margin: 0;
   padding: 12px 14px;
@@ -107,9 +144,23 @@
   border: 1px solid color-mix(in srgb, #dc2626 30%, transparent);
 }
 
+.feedbackInfo {
+  color: var(--color-text);
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+}
+
+.feedbackInfo a,
 .feedbackError a {
   font-weight: 600;
   text-decoration: underline;
+}
+
+.errorDetail {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.82rem;
+  opacity: 0.85;
 }
 
 @media (max-width: 860px) {
