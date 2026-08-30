@@ -66,7 +66,7 @@ Todo o conteúdo pessoal do site fica centralizado em **`src/config/profile.js`*
 | `name`, `title`, `tagline`, `heroSubtitle` | Textos da Home |
 | `bio` | Texto da página "Sobre" (aceita múltiplos parágrafos separados por `\n`) |
 | `avatar` | Caminho da foto de perfil (veja seção abaixo) |
-| `github`, `githubUsername`, `linkedin`, `email` | Links de contato e usuário usado para buscar repositórios |
+| `github`, `githubUsername`, `linkedin`, `behance`, `email` | Links de contato e usuário usado para buscar repositórios |
 | `skills` | Lista de badges de tecnologias na página "Sobre" |
 | `experience` | Array de experiências profissionais — vira os cards estilo currículo, com logo, cargo, empresa, período e lista de conquistas (`highlights`) |
 | `education` | Array de formação acadêmica |
@@ -95,11 +95,36 @@ Um placeholder ilustrado (`public/avatar-placeholder.svg`) é usado até você t
 
 ### Projetos do Portfólio
 
-A página `/portfolio` busca automaticamente os repositórios públicos do usuário
-definido em `githubUsername`, ignorando forks e repositórios arquivados, e permite
-filtrar por linguagem. Não é necessário editar nada manualmente — bastando manter
-seus repositórios do GitHub com descrição e (quando existir) o campo "Website"
-preenchido para que o botão "Ver deploy" apareça.
+A página `/portfolio` tem dois níveis, em ordem de importância:
+
+**1. Cases selecionados (destaque).** Vêm de `src/config/behance.js` — uma
+curadoria manual dos trabalhos publicados em
+[behance.net/celsofabri](https://www.behance.net/celsofabri). São exibidos como
+um índice numerado: cada linha abre no clique revelando capa, descrição,
+ferramentas, créditos e link para o case completo. No desktop, passar o mouse
+pelas linhas faz a capa aparecer seguindo o cursor; no toque, cada linha mostra
+uma miniatura inline.
+
+Para incluir, remover ou reordenar um case, edite o array `behanceCases`:
+
+| Campo | Descrição |
+|---|---|
+| `slug` | Identificador; também o nome do arquivo em `public/behance/` |
+| `title`, `year`, `summary` | O que aparece na linha fechada. O `year` é o ano do trabalho — só é ajustado para o último ano da passagem pela empresa (ver `experience`) quando a data do Behance cai fora dela |
+| `category` | Usada nos filtros — precisa existir em `caseCategories` |
+| `description` | Array de parágrafos exibidos quando o case é aberto |
+| `role`, `tools`, `credits` | Papel no projeto, tecnologias e ficha técnica |
+| `url`, `cover` | Link do Behance e caminho da capa em `public/behance/` |
+
+As capas ficam em `public/behance/<slug>.webp` (808px de largura), baixadas do
+próprio Behance — assim o site não depende do CDN deles em runtime.
+
+**2. Código aberto no GitHub (complemento).** Abaixo dos cases, a página busca
+automaticamente os repositórios públicos do usuário definido em
+`githubUsername`, ignorando forks e repositórios arquivados, e permite filtrar
+por linguagem. Não é necessário editar nada manualmente — basta manter seus
+repositórios com descrição e (quando existir) o campo "Website" preenchido para
+que o link "Deploy" apareça.
 
 ### Formulário de contato (Web3Forms)
 
@@ -133,14 +158,15 @@ chega no seu e-mail com nome, e-mail e mensagem preenchidos pelo visitante.
 .github/
   workflows/    deploy.yml — build + deploy automático no GitHub Pages
 src/
-  components/   Header, Footer, ProjectCard, Badge, CompanyLogo, SocialLinks, ThemeToggle, Reveal
-  config/       profile.js (dados pessoais), web3forms.js (config do formulário)
-  hooks/        useTheme, useGithubRepos, useReveal
+  components/   Header, Footer, CaseIndex, ProjectCard, Badge, CompanyLogo, SocialLinks, ThemeToggle, Reveal
+  config/       profile.js (dados pessoais), behance.js (cases em destaque), web3forms.js
+  hooks/        useTheme, useGithubRepos, useReveal, useCursorPreview
   pages/        Home, About, Portfolio, Contact (cada uma com seu .module.css)
   styles/       global.css e variables.css (paleta de cores / tema claro-escuro)
   utils/        assetPath.js, languageColors.js, companyColor.js
 public/
   avatar.jpg, avatar-placeholder.svg
+  behance/      capas dos cases em destaque do portfólio
   logos/        logos das empresas/instituições usadas na página "Sobre"
 .nvmrc          versão do Node usada localmente e no CI
 ```

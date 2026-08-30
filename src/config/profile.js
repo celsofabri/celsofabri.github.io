@@ -22,6 +22,7 @@ Ao longo de mais de 10 anos de carreira, passei por agências de publicidade, e-
   github: 'https://github.com/celsofabri',
   githubUsername: 'celsofabri',
   linkedin: 'https://www.linkedin.com/in/celsofabri/',
+  behance: 'https://www.behance.net/celsofabri',
   email: 'celso.fabri@gmail.com',
 
   skills: [
