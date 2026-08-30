@@ -110,7 +110,7 @@ Para incluir, remover ou reordenar um case, edite o array `behanceCases`:
 | Campo | Descrição |
 |---|---|
 | `slug` | Identificador; também o nome do arquivo em `public/behance/` |
-| `title`, `year`, `summary` | O que aparece na linha fechada |
+| `title`, `year`, `summary` | O que aparece na linha fechada. O `year` é o ano do trabalho — só é ajustado para o último ano da passagem pela empresa (ver `experience`) quando a data do Behance cai fora dela |
 | `category` | Usada nos filtros — precisa existir em `caseCategories` |
 | `description` | Array de parágrafos exibidos quando o case é aberto |
 | `role`, `tools`, `credits` | Papel no projeto, tecnologias e ficha técnica |

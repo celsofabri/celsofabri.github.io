@@ -9,8 +9,12 @@
 // Campos:
 //   slug        identificador; também o nome do arquivo em public/behance/
 //   title       nome do case
-//   year        ano do trabalho. Quando o próprio case informa o ano, ele é
-//               usado; nos demais, vale o ano de publicação no Behance.
+//   year        ano do trabalho. Vale o ano que o próprio case indica (ou, na
+//               falta dele, o da publicação no Behance) — exceto quando esse
+//               ano cai FORA da passagem pela empresa do projeto (ver
+//               `experience` em profile.js). Aí ele é ajustado para o último
+//               ano da passagem, já que o Behance costuma ser publicado bem
+//               depois do trabalho em si.
 //   category    usada nos filtros (precisa bater com `caseCategories`)
 //   summary     uma linha, exibida na lista fechada
 //   description parágrafos exibidos quando o case é expandido
@@ -75,7 +79,7 @@ export const behanceCases = [
   {
     slug: 'blog-bcredi',
     title: 'Blog Bcredi',
-    year: '2021',
+    year: '2020',
     category: 'Sites & Plataformas',
     summary: 'Reformulação visual do blog com ganhos de performance, acessibilidade e autonomia editorial.',
     description: [
@@ -174,7 +178,7 @@ export const behanceCases = [
   {
     slug: 'queens-snooker-burger-bar',
     title: "Queen's Snooker Burger Bar",
-    year: '2015',
+    year: '2014',
     category: 'Branding',
     summary: 'Manual de marca e padronização de logo — trabalho de conclusão de curso.',
     description: [
